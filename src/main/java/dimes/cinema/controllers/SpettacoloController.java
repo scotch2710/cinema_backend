@@ -1,9 +1,14 @@
 package dimes.cinema.controllers;
 
+import dimes.cinema.dto.SpettacoloRequestDTO;
 import dimes.cinema.entities.Spettacolo;
 import dimes.cinema.services.SpettacoloService;
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,4 +28,12 @@ public class SpettacoloController {
         List<Spettacolo> spettacoli = spettacoloService.trovaSpettacoliPerFilm(filmId);
         return ResponseEntity.ok(spettacoli);
     }
+
+    @PostMapping
+    @PreAuthorize("hasRole('ADMIN')") // Solo gli admin possono aggiungere spettacoli
+    public ResponseEntity<Spettacolo> creaSpettacolo(@Valid @RequestBody SpettacoloRequestDTO requestDTO) {
+        Spettacolo nuovoSpettacolo = spettacoloService.creaSpettacolo(requestDTO);
+        return new ResponseEntity<>(nuovoSpettacolo, HttpStatus.CREATED);
+    }
+
 }

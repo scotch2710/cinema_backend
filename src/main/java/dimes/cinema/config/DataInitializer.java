@@ -2,6 +2,8 @@ package dimes.cinema.config; // O dove l'hai messo
 
 import dimes.cinema.entities.Film;
 import dimes.cinema.repositories.FilmRepository;
+import dimes.cinema.entities.Sala;
+import dimes.cinema.repositories.SalaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,8 @@ public class DataInitializer implements CommandLineRunner {
 
     @Autowired
     private FilmRepository filmRepository;
+    @Autowired
+    private SalaRepository salaRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -44,6 +48,13 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println(">>> " + filmRepository.count() + " film inseriti con successo.");
         } else {
             System.out.println(">>> Database già popolato. Nessun film di prova inserito.");
+        }
+        if (salaRepository.count() == 0){
+            Sala sala1= new Sala();
+            sala1.setNomeSala("Sala 1");
+            sala1.setCapacitaTotale(100);
+            salaRepository.save(sala1);
+            System.out.println("Ho aggiunto Sala 1");
         }
     }
 }
