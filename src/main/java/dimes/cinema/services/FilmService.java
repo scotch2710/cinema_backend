@@ -4,6 +4,7 @@ import dimes.cinema.entities.Film;
 import dimes.cinema.repositories.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import java.util.List;
 
@@ -13,6 +14,11 @@ public class FilmService {
     // Spring "inietterà" automaticamente un'istanza del FilmRepository
     @Autowired
     private FilmRepository filmRepository;
+
+    
+    public Optional<Film> trovaFilmPerId(Long id) {
+       return filmRepository.findById(id);
+    }
 
     /**
      * Restituisce la lista di tutti i film presenti nel database.

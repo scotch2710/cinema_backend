@@ -45,9 +45,10 @@ public class PrenotazioneService {
         Prenotazione nuovaPrenotazione = new Prenotazione();
         nuovaPrenotazione.setUtente(utente);
         nuovaPrenotazione.setSpettacolo(spettacolo);
+        nuovaPrenotazione.setNumeroBiglietti(numeroPosti);
         nuovaPrenotazione.setDataPrenotazione(LocalDateTime.now());
         nuovaPrenotazione.setPrezzoPagato(spettacolo.getPrezzoBiglietto().multiply(new BigDecimal(numeroPosti)));
-        // Qui andrà la logica per salvare i singoli posti prenotati (es. A5, A6)
+        
 
         return prenotazioneRepository.save(nuovaPrenotazione);
     }

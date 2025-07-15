@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 import java.util.List;
 
@@ -18,6 +19,19 @@ public class FilmController {
     @Autowired
     private FilmService filmService;
 
+    // Dentro la classe FilmController
+
+    // Questo endpoint risponde a URL come /api/films/1, /api/films/2, ecc.
+    @GetMapping("/{id}")
+    public ResponseEntity<Film> trovaFilmPerId(@PathVariable Long id) {
+        // Chiama il service per trovare il film
+        Optional<Film> filmOptional = filmService.trovaFilmPerId(id);
+
+        // Usa un modo funzionale per gestire la risposta
+        return filmOptional
+                .map(film -> ResponseEntity.ok(film)) // Se il film esiste (isPresent), restituisce 200 OK con il film
+                .orElse(ResponseEntity.notFound().build()); // Altrimenti, restituisce 404 Not Found
+    }
     // --- ENDPOINT PUBBLICO: Ottenere tutti i film ---
     // Questo servirà per la tua home page
     @GetMapping

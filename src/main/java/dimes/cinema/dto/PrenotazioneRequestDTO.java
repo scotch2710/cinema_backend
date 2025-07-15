@@ -13,6 +13,4 @@ public class PrenotazioneRequestDTO {
     @Min(value = 1, message = "Devi prenotare almeno 1 posto.")
     private int numeroPosti;
     
-    // In futuro, potresti aggiungere qui una lista di posti specifici
-    // Esempio: private List<String> postiSelezionati; // ["A5", "A6"]
 }
