@@ -12,14 +12,14 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Dice al DB di generare l'ID automaticamente (auto-incremento)
     private Long id;
 
-    @Column(name = "titolo", nullable = false, length = 255) // Mappa questo campo su una colonna chiamata "titolo"
+    @Column(name = "titolo", nullable = false, length = 255) 
     private String titolo;
 
-    @Column(name = "trama", columnDefinition = "TEXT") // La trama può essere un testo lungo
-    private String trama; // 
+    @Column(name = "trama", columnDefinition = "TEXT") 
+    private String trama; 
 
     @Column(name = "durata_minuti")
-    private int durataMinuti; // 
+    private int durataMinuti; 
 
     @Column(name = "percorso_locandina", length = 255)
     private String percorsoLocandina;

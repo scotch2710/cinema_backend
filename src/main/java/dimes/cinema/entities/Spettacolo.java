@@ -14,17 +14,17 @@ public class Spettacolo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // --- Inizio Relazioni ---
+    
 
-    @ManyToOne // Molti spettacoli possono essere associati a UN film.
-    @JoinColumn(name = "film_id", nullable = false) // Questa è la colonna FK nel database.
+    @ManyToOne // Molti spettacoli possono essere associati a un film
+    @JoinColumn(name = "film_id", nullable = false) // Questa è la colonna FK nel database
     private Film film;
 
-    @ManyToOne // Molti spettacoli possono tenersi in UNA sala.
-    @JoinColumn(name = "sala_id", nullable = false) // Colonna FK per la sala.
+    @ManyToOne // Molti spettacoli possono tenersi in una sala
+    @JoinColumn(name = "sala_id", nullable = false) // Colonna FK per la sala
     private Sala sala;
 
-    // --- Fine Relazioni ---
+    
 
     @Column(name = "data_ora_inizio", nullable = false)
     private LocalDateTime dataOraInizio;
