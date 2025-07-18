@@ -5,6 +5,7 @@ import dimes.cinema.repositories.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class FilmService {
     @Autowired
     private FilmRepository filmRepository;
 
-    
+    @Transactional(readOnly = true)
     public Optional<Film> trovaFilmPerId(Long id) {
        return filmRepository.findById(id);
     }
@@ -24,7 +25,8 @@ public class FilmService {
      * Restituisce la lista di tutti i film presenti nel database.
      * @return una lista di oggetti Film.
      */
-    public List<Film> trovaTuttiIFilm() {
+    @Transactional(readOnly = true)
+     public List<Film> trovaTuttiIFilm() {
         return filmRepository.findAll();
     }
 
@@ -33,7 +35,8 @@ public class FilmService {
      * @param film l'oggetto Film da salvare.
      * @return il film salvato, completo di ID generato dal database.
      */
-    public Film aggiungiFilm(Film film) {
+    @Transactional
+     public Film aggiungiFilm(Film film) {
         // Qui potremmo inserire la logica di business.
         // Esempio: verificare che il titolo non sia duplicato.
         return filmRepository.save(film);
