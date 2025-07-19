@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UtenteRepository extends JpaRepository<Utente, String> {
-    // Nota che il tipo dell'ID qui è String, non Long o Integer.
+    
 }

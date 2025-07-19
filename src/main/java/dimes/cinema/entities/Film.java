@@ -3,13 +3,13 @@ package dimes.cinema.entities;
 import jakarta.persistence.*;
 import lombok.Data; // Lombok serve per generare automaticamente getter, setter, etc.
 
-@Data // Annotazione di Lombok
-@Entity // Dice a JPA: "Questa classe è un'entità e rappresenta una tabella nel database"
-@Table(name = "films") // Specifica che il nome della tabella nel DB sarà "films"
+@Data 
+@Entity // indica che questa classe è un'entità
+@Table(name = "films") // indica il nome della tabella
 public class Film {
 
-    @Id // Marca questo campo come Chiave Primaria (PK)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Dice al DB di generare l'ID automaticamente (auto-incremento)
+    @Id // id sarà la chiava primaria
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // genera l'id automaticamente
     private Long id;
 
     @Column(name = "titolo", nullable = false, length = 255) 

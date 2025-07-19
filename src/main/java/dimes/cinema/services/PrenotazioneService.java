@@ -20,25 +20,25 @@ public class PrenotazioneService {
     @Autowired
     private PrenotazioneRepository prenotazioneRepository;
     
-    // Anche UtenteService si troverà nel nuovo package
+    
     @Autowired
     private UtenteService utenteService; 
 
     @Transactional
     public Prenotazione creaPrenotazione(String utenteId, String username, String email, Long spettacoloId, int numeroPosti) {
         
-        // 1. OTTENERE/CREARE L'UTENTE
-        Utente utente = utenteService.trovaOcreaUtente(utenteId, username, email);
+        
+        Utente utente = utenteService.trovaOcreaUtente(utenteId, username, email);   //ottiene o crea l'utente
 
-        // 2. TROVARE LO SPETTACOLO E VERIFICARE LA DISPONIBILITÀ
-        Spettacolo spettacolo = spettacoloRepository.findById(spettacoloId)
+        
+        Spettacolo spettacolo = spettacoloRepository.findById(spettacoloId)                   // trova lo spettacolo e verifica se ci sono posti 
                 .orElseThrow(() -> new RuntimeException("Spettacolo non trovato con id: " + spettacoloId));
 
         if (spettacolo.getPostiDisponibili() < numeroPosti) {
             throw new RuntimeException("Posti non sufficienti per lo spettacolo: " + spettacolo.getFilm().getTitolo());
         }
 
-        // 3. ESEGUIRE LE OPERAZIONI DI AGGIORNAMENTO E CREAZIONE
+        
         spettacolo.setPostiDisponibili(spettacolo.getPostiDisponibili() - numeroPosti);
         spettacoloRepository.save(spettacolo);
 

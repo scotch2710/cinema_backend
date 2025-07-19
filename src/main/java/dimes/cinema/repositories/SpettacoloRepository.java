@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface SpettacoloRepository extends JpaRepository<Spettacolo, Long> {
-    // Potremmo aggiungere query personalizzate qui, ad esempio per trovare gli spettacoli di un dato film:
+    
     
     List<Spettacolo> findByFilmId(Long filmId);
 }

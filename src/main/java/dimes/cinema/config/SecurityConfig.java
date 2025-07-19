@@ -34,7 +34,7 @@ public class SecurityConfig {
             
             .oauth2ResourceServer(oauth2 -> oauth2
                 .jwt(jwt -> jwt
-                    .jwtAuthenticationConverter(jwtAuthenticationConverter()) // Usa il nostro convertitore custom
+                    .jwtAuthenticationConverter(jwtAuthenticationConverter()) // usa il convertitore
                 )
             );
             
@@ -43,8 +43,7 @@ public class SecurityConfig {
     }
 
     
-    // Questo metodo crea il convertitore e gli dice di usare la nostra classe
-    // KeycloakRoleConverter per estrarre i ruoli/permessi dal token.
+
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
@@ -55,17 +54,17 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        // Specifica l'origine del tuo frontend Angular
+        // origine del frontend
         configuration.setAllowedOrigins(List.of("http://localhost:4200"));
-        // Specifica i metodi HTTP che il frontend è autorizzato a usare
+        // metodi HTTP che il frontend è autorizzato a usare
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        // Specifica gli header che il frontend è autorizzato a inviare
+        // header che il frontend è autorizzato a inviare
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        // Permette l'invio di credenziali (necessario per i token)
+        // permette l'invio di credenziali (necessario per i token)
         configuration.setAllowCredentials(true);
         
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        // Applica questa configurazione a tutte le rotte dell'applicazione ("/**")
+        // applica questa configurazione a tutti i path
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }

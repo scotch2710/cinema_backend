@@ -21,8 +21,8 @@ public class SpettacoloController {
     @Autowired
     private SpettacoloService spettacoloService;
 
-    // --- ENDPOINT PUBBLICO: Ottenere gli spettacoli per un dato film ---
-    // Esempio di chiamata dal frontend: /api/spettacoli?filmId=1
+    // ottenere gli spettacoli per un dato film 
+    
     @GetMapping
     public ResponseEntity<List<Spettacolo>> trovaSpettacoliPerFilm(@RequestParam Long filmId) {
         List<Spettacolo> spettacoli = spettacoloService.trovaSpettacoliPerFilm(filmId);
@@ -30,7 +30,7 @@ public class SpettacoloController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')") // Solo gli admin possono aggiungere spettacoli
+    @PreAuthorize("hasRole('ADMIN')") // solo gli admin possono aggiungere spettacoli
     public ResponseEntity<Spettacolo> creaSpettacolo(@Valid @RequestBody SpettacoloRequestDTO requestDTO) {
         Spettacolo nuovoSpettacolo = spettacoloService.creaSpettacolo(requestDTO);
         return new ResponseEntity<>(nuovoSpettacolo, HttpStatus.CREATED);

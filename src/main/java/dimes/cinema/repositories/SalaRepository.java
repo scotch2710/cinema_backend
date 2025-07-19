@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SalaRepository extends JpaRepository<Sala, Integer> {
-    // JpaRepository fornisce già tutti i metodi di base.
+    
 }

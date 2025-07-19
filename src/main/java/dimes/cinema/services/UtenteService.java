@@ -28,10 +28,10 @@ public class UtenteService {
         Optional<Utente> utenteEsistente = utenteRepository.findById(id);
 
         if (utenteEsistente.isPresent()) {
-            // Se l'utente esiste già nel nostro DB, restituiamo quello.
+            // se l'utente esiste già nel DB, restituisce quello.
             return utenteEsistente.get();
         } else {
-            // Se è la prima volta che vediamo questo utente, creiamo un nuovo record.
+            // se è la prima volta che vediamo questo utente, creiamo un nuovo utente
             Utente nuovoUtente = new Utente();
             nuovoUtente.setId(id);
             nuovoUtente.setUsername(username);

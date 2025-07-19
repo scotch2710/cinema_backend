@@ -8,11 +8,11 @@ import lombok.Data;
 @Table(name = "utenti")
 public class Utente {
 
-    @Id // È la chiave primaria, ma non è auto-generata
-    @Column(length = 36) // L'ID di Keycloak è una stringa di 36 caratteri
+    @Id // è la chiave primaria ma non è auto-generata, è l'id dell'utente su keycloak
+    @Column(length = 36) // id di keycloak è una stringa di 36 caratteri
     private String id;
 
-    @Column(unique = true, nullable = false) // Lo username dovrebbe essere unico
+    @Column(unique = true, nullable = false) // username dovrebbe essere unico
     private String username;
 
     @Column(unique = true, nullable = true)

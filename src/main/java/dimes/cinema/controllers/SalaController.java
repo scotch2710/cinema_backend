@@ -13,14 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/sale")
-@CrossOrigin(origins = "http://localhost:4200") // Permette le chiamate dal frontend
+@CrossOrigin(origins = "http://localhost:4200") 
 public class SalaController {
 
     @Autowired
     private SalaRepository salaRepository;
 
     /**
-     * Endpoint per ottenere la lista di tutte le sale cinematografiche.
      * @return Una lista di tutte le sale.
      */
     @GetMapping

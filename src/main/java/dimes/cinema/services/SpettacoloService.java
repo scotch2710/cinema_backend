@@ -32,24 +32,24 @@ public class SpettacoloService {
     
     @Transactional
     public Spettacolo creaSpettacolo(SpettacoloRequestDTO requestDTO) {
-        // 1. Trova le entità collegate (Film e Sala) usando gli ID forniti.
-        Film film = filmRepository.findById(requestDTO.getFilmId())
+        
+        Film film = filmRepository.findById(requestDTO.getFilmId())                       // cerca film e sala tramite i loro id
                 .orElseThrow(() -> new RuntimeException("Film non trovato con id: " + requestDTO.getFilmId()));
         
         Sala sala = salaRepository.findById(requestDTO.getSalaId())
                 .orElseThrow(() -> new RuntimeException("Sala non trovata con id: " + requestDTO.getSalaId()));
 
-        // 2. Crea la nuova entità Spettacolo.
+        
         Spettacolo nuovoSpettacolo = new Spettacolo();
         nuovoSpettacolo.setFilm(film);
         nuovoSpettacolo.setSala(sala);
         nuovoSpettacolo.setDataOraInizio(requestDTO.getDataOraInizio());
         nuovoSpettacolo.setPrezzoBiglietto(requestDTO.getPrezzoBiglietto());
         
-        // 3. Logica di business: inizializza i posti disponibili con la capacità della sala.
-        nuovoSpettacolo.setPostiDisponibili(sala.getCapacitaTotale());
         
-        // 4. Salva il nuovo spettacolo nel database.
+        nuovoSpettacolo.setPostiDisponibili(sala.getCapacitaTotale());   // inizializzo i posti disponibili con la capacità totale della sala
+        
+        
         return spettacoloRepository.save(nuovoSpettacolo);
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service // Annotazione fondamentale che registra questa classe come un Service di Spring
+@Service // registra questa classe come un Service di Spring
 public class FilmService {
 
     // Spring "inietterà" automaticamente un'istanza del FilmRepository
@@ -37,8 +37,7 @@ public class FilmService {
      */
     @Transactional
      public Film aggiungiFilm(Film film) {
-        // Qui potremmo inserire la logica di business.
-        // Esempio: verificare che il titolo non sia duplicato.
+
         return filmRepository.save(film);
     }
 }

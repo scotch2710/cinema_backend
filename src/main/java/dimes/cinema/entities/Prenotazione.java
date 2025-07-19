@@ -28,7 +28,7 @@ public class Prenotazione {
     @Column(name = "numero_biglietti")
     private int numeroBiglietti;
 
-    //@Column(name = "numero_posto_fila")
+    //@Column(name = "numero_posto_fila")         // funzionalità che andrebbe aggiunta 
     //private String numeroPostoFila;
 
     //@Column(name = "numero_posto_sedia")

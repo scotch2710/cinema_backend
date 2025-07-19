@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FilmRepository extends JpaRepository<Film, Long> {
-    // JpaRepository ci fornisce già tutti i metodi base come findAll(), findById(), save(), delete()
-    // Per ora non serve aggiungere altro!
+    // jpaRepository ci fornisce già i metodi base come findAll(), findById(), save(), delete()
+    
 }

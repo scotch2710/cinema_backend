@@ -1,4 +1,4 @@
-package dimes.cinema.config; // O dove l'hai messo
+package dimes.cinema.config; 
 
 import dimes.cinema.entities.Film;
 import dimes.cinema.repositories.FilmRepository;
@@ -20,7 +20,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Esegui questo codice solo se la tabella dei film è vuota
+        // esegue questo codice solo se la tabella dei film è vuota
         if (filmRepository.count() == 0) {
             System.out.println(">>> Database vuoto. Inserimento dei film di prova...");
 
@@ -42,7 +42,7 @@ public class DataInitializer implements CommandLineRunner {
             film3.setDurataMinuti(180);
             film3.setPercorsoLocandina("/images/oppenheimer.jpg");
 
-            // Salva tutti i film in una sola operazione
+            // salva tutti i film in una sola operazione
             filmRepository.saveAll(List.of(film1, film2, film3));
             
             System.out.println(">>> " + filmRepository.count() + " film inseriti con successo.");

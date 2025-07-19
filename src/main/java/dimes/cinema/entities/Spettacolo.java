@@ -16,12 +16,12 @@ public class Spettacolo {
 
     
 
-    @ManyToOne // Molti spettacoli possono essere associati a un film
-    @JoinColumn(name = "film_id", nullable = false) // Questa è la colonna FK nel database
+    @ManyToOne                     // molti spettacoli possono essere associati ad un unico film
+    @JoinColumn(name = "film_id", nullable = false)             // colonna FK nel database
     private Film film;
 
-    @ManyToOne // Molti spettacoli possono tenersi in una sala
-    @JoinColumn(name = "sala_id", nullable = false) // Colonna FK per la sala
+    @ManyToOne                     // molti spettacoli possono tenersi in una sala
+    @JoinColumn(name = "sala_id", nullable = false) 
     private Sala sala;
 
     

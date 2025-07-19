@@ -25,13 +25,13 @@ public class PrenotazioneController {
     @PostMapping
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Prenotazione> creaPrenotazione(
-            @Valid @RequestBody PrenotazioneRequestDTO request, // <-- Usa @Valid per attivare la validazione
+            @Valid @RequestBody PrenotazioneRequestDTO request, // @Valid per attivare la validazione
             Authentication authentication) {
         
-        // Otteniamo i dati dell'utente in modo sicuro dal token di autenticazione
+        // ottengo i dati dell'utente dal token di autenticazione
         String utenteId = authentication.getName(); 
         
-        // Estraiamo i dati necessari dal DTO in modo pulito e sicuro
+        // dati necessari estratti dal DTO 
         Long spettacoloId = request.getSpettacoloId();
         int numeroPosti = request.getNumeroPosti();
         
