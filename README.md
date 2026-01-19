@@ -1,7 +1,5 @@
 🎬 Cinema DIMES
 
-📖 Panoramica del Progetto
-
 Cinema DIMES è una web application Full-Stack moderna progettata per la gestione completa di un cinema multisala. Il progetto nasce con l'obiettivo di simulare un ambiente di produzione reale, separando nettamente il backend (Spring Boot) dal frontend (Angular) e delegando la gestione della sicurezza e delle identità a un provider esterno standard di settore (Keycloak).
 
 L'applicazione offre due esperienze distinte: un'interfaccia intuitiva per i clienti che desiderano esplorare la programmazione e acquistare biglietti, e una console di gestione avanzata per gli amministratori.
